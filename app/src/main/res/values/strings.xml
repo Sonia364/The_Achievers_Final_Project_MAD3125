@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">The_Achievers_Final_Project_MAD3125</string>
+
+    <string-array name="type">
+
+        <item>Manager</item>
+        <item>Programmer</item>
+        <item>Tester</item>
+
+    </string-array>
 </resources>
+
+
+
