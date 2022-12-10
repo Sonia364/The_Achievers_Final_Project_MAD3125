@@ -10,32 +10,31 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sonia.the_achievers_final_project_mad3125.databinding.ActivityMainBinding;
+
 public class MainActivity extends AppCompatActivity {
-    EditText email;
-    EditText password;
-    Button loginButton;
+
+    private ActivityMainBinding binding;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        email = findViewById(R.id.email);
-        password = findViewById(R.id.password);
-        loginButton = findViewById(R.id.btnLogin);
-
-        loginButton.setOnClickListener(
+       binding.btnLogin.setOnClickListener(
                 v-> {
-                if (email.getText().toString().equals("")) {
+                if (binding.email.getText().toString().equals("")) {
                     Toast.makeText(this, "Please enter your Email", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (password.getText().toString().equals("")) {
+                if (binding.password.getText().toString().equals("")) {
                     Toast.makeText(this, "Please enter your Password", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if (email.getText().toString().equals("admin") && password.getText().toString().equals("admin")) {
+                if (binding.email.getText().toString().equals("admin") && binding.password.getText().toString().equals("admin")) {
                     Intent intent = new Intent(MainActivity.this, EmployeeDashboard.class);
                     startActivity(intent);
 

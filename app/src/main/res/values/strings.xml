@@ -3,6 +3,7 @@
 
     <string-array name="type">
 
+        <item>Choose a Type..</item>
         <item>Manager</item>
         <item>Programmer</item>
         <item>Tester</item>
