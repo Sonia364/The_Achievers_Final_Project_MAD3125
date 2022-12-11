@@ -1,4 +1,4 @@
-package com.sonia.the_achievers_final_project_mad3125.Models; /**
+package com.sonia.the_achievers_final_project_mad3125.models; /**
  The Employee class is an abstract class that holds
  general data about an employee. Classes representing
  specific types of employees should inherit from
@@ -11,7 +11,7 @@ public class Employee
     public String name;
     private int birthYear;
     private double monthlySalary;
-    private Vehicle employeeVehicle;
+
     private int rate = 100;
     private double income = 0.0;
     public String type;
@@ -30,7 +30,7 @@ public class Employee
         monthlySalary = empMonthlySalary;
         rate = empRate;
         type = empType;
-        employeeVehicle = vehicle;
+
         System.out.println("We have a new employee: "+name+", a "+type+".");
     }
 
@@ -54,9 +54,7 @@ public class Employee
         String str;
         str = "Name: " + name + ", a "+ type +"."
                 + "\nAge: " + age() + " ";
-        if (employeeVehicle != null){
-            str += employeeVehicle.toString();
-        }
+
         str += "\n" + name + " has an Occupation rate: " + rate + "%";
         return str;
     }
