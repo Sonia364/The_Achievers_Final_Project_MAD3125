@@ -2,7 +2,6 @@ package com.sonia.the_achievers_final_project_mad3125.models;
 
 public class Car extends Vehicle{
 
-    private String gear;
     private String carType;
 
     /**
@@ -13,14 +12,12 @@ public class Car extends Vehicle{
      * @param vehiclePlate    The vehicle's plate.
      * @param vehicleColor    The vehicle's color.
      * @param vehicleCategory The vehicle's category.
-     * @param vehicleGear     The vehicle's gear.
-     * @param vehicleCarType     The vehicle's car type.
+     * @param vehicleType     The vehicle's car type.
      *
      */
-    public Car(String vehicleMake, String vehiclePlate, String vehicleColor, String vehicleCategory, String vehicleGear, String vehicleCarType) {
-        super(vehicleMake, vehiclePlate, vehicleColor, vehicleCategory, "Car");
-        gear = vehicleGear;
-        carType = vehicleCarType;
+    public Car(String vehicleMake, String vehiclePlate, String vehicleColor, String vehicleCategory, String vehicleType) {
+        super(vehicleMake, vehiclePlate, vehicleColor, vehicleType);
+        carType = vehicleCategory;
     }
 
     /**
@@ -34,7 +31,6 @@ public class Car extends Vehicle{
         String str;
 
         str = super.toString()
-                + "\t - Gear Type: " + gear + "\n"
                 + "\t - Type: " + carType;
         return str;
     }

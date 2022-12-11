@@ -11,12 +11,11 @@ public class Motorcycle extends Vehicle{
      * @param vehicleMake     The vehicle's make.
      * @param vehiclePlate    The vehicle's plate.
      * @param vehicleColor    The vehicle's color.
-     * @param vehicleCategory The vehicle's category.
-     * @param vehicleSideCar The vehicle's category.
+     * @param vehicleSideCar The vehicle's sidecar.
      *
      */
-    public Motorcycle(String vehicleMake, String vehiclePlate, String vehicleColor, String vehicleCategory, boolean vehicleSideCar) {
-        super(vehicleMake, vehiclePlate, vehicleColor, vehicleCategory, "Motorcycle");
+    public Motorcycle(String vehicleMake, String vehiclePlate, String vehicleColor, boolean vehicleSideCar, String vehicleType) {
+        super(vehicleMake, vehiclePlate, vehicleColor, vehicleType);
         sideCar = vehicleSideCar;
     }
 
@@ -31,9 +30,9 @@ public class Motorcycle extends Vehicle{
         String str;
         String newStr;
         if (sideCar){
-            newStr = "\t - With sidecar\n ";
+            newStr = "\t - with a sidecar\n ";
         }else{
-            newStr = "\t - Without sidecar";
+            newStr = "\t - without a sidecar";
         }
         str = super.toString() + newStr;
         return str;

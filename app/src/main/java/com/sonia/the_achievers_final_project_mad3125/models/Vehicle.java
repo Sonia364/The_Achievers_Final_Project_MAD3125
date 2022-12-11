@@ -13,7 +13,6 @@ public class Vehicle {
     private String make;
     private String plate;
     private String color;
-    private String category;
     private String type;
 
     /**
@@ -22,15 +21,13 @@ public class Vehicle {
      @param vehicleMake The vehicle's make.
      @param vehiclePlate The vehicle's plate.
      @param vehicleColor The vehicle's color.
-     @param vehicleCategory The vehicle's category.
 
      */
 
-    public Vehicle(String vehicleMake, String vehiclePlate, String vehicleColor, String vehicleCategory, String vehicleType){
+    public Vehicle(String vehicleMake, String vehiclePlate, String vehicleColor,String vehicleType){
         make = vehicleMake;
         plate = vehiclePlate;
         color = vehicleColor;
-        category = vehicleCategory;
         type = vehicleType;
     }
 
@@ -46,7 +43,6 @@ public class Vehicle {
                 + "\t - make: " + make + "\n"
                 + "\t - plate: " + plate + "\n"
                 + "\t - color: " + color + "\n"
-                + "\t - category: " + category + "\n";
         return str;
     }
 
