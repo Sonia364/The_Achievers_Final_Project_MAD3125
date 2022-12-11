@@ -1,10 +1,12 @@
-package com.sonia.the_achievers_final_project_mad3125;
+package com.sonia.the_achievers_final_project_mad3125.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.Button;
 import android.content.Intent;
+
+import com.sonia.the_achievers_final_project_mad3125.R;
 
 public class EmployeeDashboard extends AppCompatActivity {
 

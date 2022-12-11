@@ -1,10 +1,12 @@
-package com.sonia.the_achievers_final_project_mad3125;
+package com.sonia.the_achievers_final_project_mad3125.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+
+import com.sonia.the_achievers_final_project_mad3125.R;
 
 public class RegistrationActivity extends AppCompatActivity {
     Spinner spinner;
