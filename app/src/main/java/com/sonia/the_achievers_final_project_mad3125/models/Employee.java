@@ -24,14 +24,12 @@ public class Employee
      @param empMonthlySalary The employee's monthly salary.
      @param empRate The employee's rate.
      */
-    public Employee(String empName, int empBirthYear, double empMonthlySalary, int empRate, String empType, Vehicle vehicle ){
+    public Employee(String empName, int empBirthYear, double empMonthlySalary, int empRate, String empType ){
         name = empName;
         birthYear = empBirthYear;
         monthlySalary = empMonthlySalary;
         rate = empRate;
         type = empType;
-
-        System.out.println("We have a new employee: "+name+", a "+type+".");
     }
 
     /**
@@ -55,7 +53,8 @@ public class Employee
         str = "Name: " + name + ", a "+ type +"."
                 + "\nAge: " + age() + " ";
 
-        str += "\n" + name + " has an Occupation rate: " + rate + "%";
+        str += "\nOccupation rate: " + rate + "%";
+        str += "\nAnnual Income: $"+annualIncome();
         return str;
     }
 
