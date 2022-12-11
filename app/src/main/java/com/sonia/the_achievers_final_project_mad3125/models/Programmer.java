@@ -17,8 +17,8 @@ public class Programmer  extends Employee  {
      * @param empMonthlySalary The employee's monthly salary.
      * @param empRate          The employee's rate.
      */
-    public Programmer(String empName, int empBirthYear, double empMonthlySalary, int empRate, int pOfProjects) {
-        super(empName, empBirthYear, empMonthlySalary, empRate, "Programmer");
+    public Programmer(String empName, int empBirthYear, double empMonthlySalary, int empRate, int pOfProjects, String empType, Vehicle vehicle) {
+        super(empName, empBirthYear, empMonthlySalary, empRate, empType, vehicle);
         noOfProjects = pOfProjects;
     }
 

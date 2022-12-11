@@ -18,8 +18,8 @@ public class Manager extends Employee {
      * @param empMonthlySalary The employee's monthly salary.
      * @param empRate          The employee's rate.
      */
-    public Manager(String empName, int empBirthYear, double empMonthlySalary, int empRate, int mClients) {
-        super(empName, empBirthYear, empMonthlySalary, empRate, "Manager");
+    public Manager(String empName, int empBirthYear, double empMonthlySalary, int empRate, String empType, int mClients,  Vehicle vehicle) {
+        super(empName, empBirthYear, empMonthlySalary, empRate, empType, vehicle);
         noOfClients = mClients;
     }
 

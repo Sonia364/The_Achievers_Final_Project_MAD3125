@@ -17,8 +17,8 @@ public class Tester extends Employee {
      * @param empMonthlySalary The employee's monthly salary.
      * @param empRate          The employee's rate.
      */
-    public Tester(String empName, int empBirthYear, double empMonthlySalary, int empRate, int bugs) {
-        super(empName,empBirthYear, empMonthlySalary, empRate, "Tester");
+    public Tester(String empName, int empBirthYear, double empMonthlySalary, int empRate, int bugs, String empType, Vehicle vehicle) {
+        super(empName,empBirthYear, empMonthlySalary, empRate, empType, vehicle);
         nbBugs = bugs;
     }
 

@@ -11,7 +11,7 @@ public class Employee
     public String name;
     private int birthYear;
     private double monthlySalary;
-
+    private Vehicle employeeVehicle;
     private int rate = 100;
     private double income = 0.0;
     public String type;
@@ -24,12 +24,13 @@ public class Employee
      @param empMonthlySalary The employee's monthly salary.
      @param empRate The employee's rate.
      */
-    public Employee(String empName, int empBirthYear, double empMonthlySalary, int empRate, String empType ){
+    public Employee(String empName, int empBirthYear, double empMonthlySalary, int empRate, String empType, Vehicle vehicle ){
         name = empName;
         birthYear = empBirthYear;
         monthlySalary = empMonthlySalary;
         rate = empRate;
         type = empType;
+        employeeVehicle = vehicle;
     }
 
     /**
@@ -52,7 +53,9 @@ public class Employee
         String str;
         str = "Name: " + name + ", a "+ type +"."
                 + "\nAge: " + age() + " ";
-
+        if (employeeVehicle != null){
+            str += employeeVehicle.toString();
+        }
         str += "\nOccupation rate: " + rate + "%";
         str += "\nAnnual Income: $"+annualIncome();
         return str;
