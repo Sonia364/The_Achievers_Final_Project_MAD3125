@@ -16,15 +16,18 @@
         app:layout_constraintRight_toRightOf="parent"
         />
 
-    <Button
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_new"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/theme_btn_text_color"
-        android:text="Add New"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="28dp"
+
+        app:fabSize="auto"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintBottom_toBottomOf="parent" />
+        app:srcCompat="@drawable/ic_baseline_person_add_alt_1_24" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
