@@ -1,13 +1,22 @@
 package com.sonia.the_achievers_final_project_mad3125.views;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatTextView;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.content.Intent;
@@ -52,7 +61,16 @@ public class EmployeeDashboard extends AppCompatActivity implements SearchView.O
         }
 
         lv.setOnItemClickListener(this);
+        lv.setLongClickable(true);
         lv.setTextFilterEnabled(true);
+
+        lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long l) {
+                openLogoutDialog(position);
+                return true;
+            }
+        });
 
 
 
@@ -128,4 +146,38 @@ public class EmployeeDashboard extends AppCompatActivity implements SearchView.O
         intent.putExtra("employee",employee);
         startActivity(intent);
     }
+
+
+
+    void openLogoutDialog(int position) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater layoutInflaterAndroid = LayoutInflater.from(this);
+        View view = layoutInflaterAndroid.inflate(R.layout.alert_dialog, null);
+        builder.setView(view);
+        builder.setCancelable(true);
+        final AlertDialog alertDialog = builder.create();
+        alertDialog.setCanceledOnTouchOutside(true);
+        Window window = alertDialog.getWindow();
+        window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        WindowManager.LayoutParams lp = alertDialog.getWindow().getAttributes();
+        alertDialog.getWindow().setGravity(Gravity.CENTER);
+        alertDialog.getWindow().setAttributes(lp);
+        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        AppCompatTextView edit = view.findViewById(R.id.edit);
+        AppCompatTextView delete = view.findViewById(R.id.delete);
+        edit.setOnClickListener(view1 -> {
+            alertDialog.dismiss();
+
+
+
+        });
+        delete.setOnClickListener(view1 -> {
+            alertDialog.dismiss();
+            EmployeeApplication.getList().remove(position);
+            employeeAdapter.notifyDataSetChanged();
+
+        });
+        alertDialog.show();
+    }
+
 }

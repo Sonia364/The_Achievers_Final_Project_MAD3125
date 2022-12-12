@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,10 +13,11 @@ import androidx.annotation.Nullable;
 
 import com.sonia.the_achievers_final_project_mad3125.R;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmployeeAdapter extends ArrayAdapter {
+public class EmployeeAdapter extends ArrayAdapter implements Serializable {
 
     private ArrayList<EmployeeModel> employees;
     private final LayoutInflater layoutInflater;
@@ -27,7 +29,6 @@ public class EmployeeAdapter extends ArrayAdapter {
         this.layoutInflater = LayoutInflater.from(context);
         this.layoutResource = resource;
     }
-
     public void setData(ArrayList<EmployeeModel> employee){
         this.employees = employee;
         notifyDataSetChanged();
@@ -52,7 +53,6 @@ public class EmployeeAdapter extends ArrayAdapter {
             nameText.setText(employees.get(position).getEmployeeName());
             idText.setText(String.valueOf(employees.get(position).getId()));
             typeText.setText(employees.get(position).getEmployeeType());
-
 
         }
         return v;

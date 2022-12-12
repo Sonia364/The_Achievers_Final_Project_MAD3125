@@ -1,6 +1,8 @@
 package com.sonia.the_achievers_final_project_mad3125.models;
 
-public class EmployeeModel {
+import java.io.Serializable;
+
+public class EmployeeModel implements Serializable {
     private String id;
     private Employee employee;
 

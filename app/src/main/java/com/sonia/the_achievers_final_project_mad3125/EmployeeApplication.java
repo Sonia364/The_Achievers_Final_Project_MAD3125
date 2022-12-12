@@ -4,9 +4,10 @@ import android.app.Application;
 
 import com.sonia.the_achievers_final_project_mad3125.models.EmployeeModel;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class EmployeeApplication extends Application {
+public class EmployeeApplication extends Application implements Serializable {
     static ArrayList<EmployeeModel> commonList = new ArrayList<>();
 
     @Override

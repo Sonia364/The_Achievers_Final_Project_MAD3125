@@ -5,7 +5,9 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 
-public class EmployeeViewModel extends AndroidViewModel {
+import java.io.Serializable;
+
+public class EmployeeViewModel extends AndroidViewModel implements Serializable {
     public EmployeeViewModel(@NonNull Application application) {
         super(application);
     }
