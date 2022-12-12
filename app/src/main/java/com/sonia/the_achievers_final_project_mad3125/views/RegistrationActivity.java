@@ -71,6 +71,20 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                         binding.empBirthyear.setError("Please enter the Birth year");
                         binding.empBirthyear.requestFocus();
                     }
+                    else if(binding.empSalary.getText().toString().equals("")){
+                        binding.empSalary.setError("Please enter Employee salary");
+                        binding.empSalary.requestFocus();
+                    }
+                    else if(binding.empOccupation.getText().toString().equals("")){
+                        binding.empOccupation.setError("Please enter Occupation rate");
+                        binding.empOccupation.requestFocus();
+                    }
+                    else if(binding.empId.getText().toString().equals("")){
+                        binding.empId.setError("Please enter Employee id");
+                        binding.empId.requestFocus();
+                    }
+
+
 
 
 
