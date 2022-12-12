@@ -1,6 +1,8 @@
 package com.sonia.the_achievers_final_project_mad3125.models;
 
-public class Motorcycle extends Vehicle{
+import java.io.Serializable;
+
+public class Motorcycle extends Vehicle implements Serializable {
 
     private String sideCar;
 

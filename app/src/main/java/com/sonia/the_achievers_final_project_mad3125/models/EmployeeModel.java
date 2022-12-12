@@ -28,10 +28,10 @@ public class EmployeeModel implements Serializable {
     }
 
     public String getEmployeeName(){
-        return getEmployee().name;
+        return getEmployee().getName();
     }
 
     public String getEmployeeType(){
-        return getEmployee().type;
+        return getEmployee().getType();
     }
 }

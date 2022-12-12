@@ -26,6 +26,9 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.sonia.the_achievers_final_project_mad3125.EmployeeApplication;
+import com.sonia.the_achievers_final_project_mad3125.models.Car;
+import com.sonia.the_achievers_final_project_mad3125.models.Manager;
+import com.sonia.the_achievers_final_project_mad3125.models.Programmer;
 import com.sonia.the_achievers_final_project_mad3125.views.EmployeeDetail;
 import com.sonia.the_achievers_final_project_mad3125.models.Employee;
 import com.sonia.the_achievers_final_project_mad3125.models.EmployeeAdapter;
@@ -50,6 +53,34 @@ public class EmployeeDashboard extends AppCompatActivity implements SearchView.O
         super.onCreate(savedInstanceState);
         binding = ActivityEmployeeDashboardBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        EmployeeApplication.getList().add(new EmployeeModel("emp123",new Manager("Rabia",
+                1995,
+                2000,
+                20,
+                "Manager",
+                20,
+                new Car("Honda",
+                        "1234",
+                        "Red",
+                        "Sports",
+                        "Car"
+                ))));
+
+        EmployeeApplication.getList().add(new EmployeeModel("emp123",new Programmer("Abhi",
+                1985,
+                2000,
+                20,
+                12,
+                "Programmer",
+                new Car("Honda",
+                        "1234",
+                        "Red",
+                        "Sports",
+                        "Car"
+                ))));
+
+
 
         lv = binding.employeeListView;
         setContentView(binding.getRoot());
@@ -166,9 +197,13 @@ public class EmployeeDashboard extends AppCompatActivity implements SearchView.O
         AppCompatTextView edit = view.findViewById(R.id.edit);
         AppCompatTextView delete = view.findViewById(R.id.delete);
         edit.setOnClickListener(view1 -> {
-            alertDialog.dismiss();
-
-
+           alertDialog.dismiss();
+            Intent yourIntent = new Intent(EmployeeDashboard.this, RegistrationActivity.class);
+            Bundle b = new Bundle();
+            b.putSerializable("employee", EmployeeApplication.getList().get(position));
+            b.putInt("employeeIndex", position);
+            yourIntent.putExtras(b);
+            startActivity(yourIntent);
 
         });
         delete.setOnClickListener(view1 -> {

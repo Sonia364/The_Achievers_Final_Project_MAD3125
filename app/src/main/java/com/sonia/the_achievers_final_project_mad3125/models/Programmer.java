@@ -1,10 +1,12 @@
 package com.sonia.the_achievers_final_project_mad3125.models;
 
+import java.io.Serializable;
+
 /**
  This class holds data for a Programmer employee.
  */
 
-public class Programmer  extends Employee  {
+public class Programmer  extends Employee  implements Serializable {
 
     private final int GAIN_FACTOR_PROJECTS = 200;
     private int noOfProjects;

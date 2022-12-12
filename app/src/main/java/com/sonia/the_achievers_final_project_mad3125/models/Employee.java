@@ -4,17 +4,18 @@ package com.sonia.the_achievers_final_project_mad3125.models; /**
  specific types of employees should inherit from
  this class.
  */
+import java.io.Serializable;
 import java.time.YearMonth;
-public class Employee
+public class Employee implements Serializable
 {
 
-    public String name;
+    private String name;
     private int birthYear;
     private double monthlySalary;
     private Vehicle employeeVehicle;
     private int rate = 100;
     private double income = 0.0;
-    public String type;
+    private String type;
 
     /**
      The Constructor sets the employee's name,
@@ -31,6 +32,34 @@ public class Employee
         rate = empRate;
         type = empType;
         employeeVehicle = vehicle;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getBirthYear() {
+        return birthYear;
+    }
+
+    public double getMonthlySalary() {
+        return monthlySalary;
+    }
+
+    public Vehicle getEmployeeVehicle() {
+        return employeeVehicle;
+    }
+
+    public int getRate() {
+        return rate;
+    }
+
+    public double getIncome() {
+        return income;
+    }
+
+    public String getType() {
+        return type;
     }
 
     /**

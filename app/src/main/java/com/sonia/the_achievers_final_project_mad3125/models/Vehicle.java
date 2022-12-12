@@ -1,5 +1,7 @@
 package com.sonia.the_achievers_final_project_mad3125.models;
 
+import java.io.Serializable;
+
 /**
  The Vehicle class is an abstract class that holds
  general data about a vehicle. Classes representing
@@ -8,7 +10,7 @@ package com.sonia.the_achievers_final_project_mad3125.models;
  */
 
 
-public class Vehicle {
+public class Vehicle implements Serializable {
 
     private String make;
     private String plate;

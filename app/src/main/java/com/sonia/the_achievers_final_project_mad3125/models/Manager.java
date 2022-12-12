@@ -1,9 +1,11 @@
 package com.sonia.the_achievers_final_project_mad3125.models;
 
+import java.io.Serializable;
+
 /**
  This class holds data for a Manager employee.
  */
-public class Manager extends Employee {
+public class Manager extends Employee implements Serializable {
 
     private final int GAIN_FACTOR_CLIENT = 500;
     private final int GAIN_FACTOR_TRAVEL = 100;

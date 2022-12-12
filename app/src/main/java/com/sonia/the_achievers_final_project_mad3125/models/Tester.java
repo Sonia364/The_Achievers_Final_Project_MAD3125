@@ -1,9 +1,11 @@
 package com.sonia.the_achievers_final_project_mad3125.models;
 
+import java.io.Serializable;
+
 /**
  This class holds data for a Tester employee.
  */
-public class Tester extends Employee {
+public class Tester extends Employee implements Serializable {
 
     private final int GAIN_FACTOR_ERROR = 10;   // Gain Factor Error
     private int nbBugs = 0;

@@ -46,11 +46,12 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     private static  String OCCUPATIONRATE = "occupationrate";
     private static  String EMPID = "empid";
     private String firstnameVal;
-    private String lastnameVal;
     private String birthyearval;
     private String empsalaryval;
     private String occupationrateval;
     private String empid;
+
+    EmployeeModel employeeModel;
 
     @Override
 
@@ -59,6 +60,29 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         binding = ActivityRegistrationBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         employeeViewModel = new ViewModelProvider(this).get(EmployeeViewModel.class);
+
+
+
+        //Bundle extras = getIntent().getExtras();
+        //String newString = extras.getString("employee");
+       // binding.empFirstname.setText(newString.);
+
+
+        if(getIntent().getSerializableExtra("employee")!= null){
+
+            Intent i = getIntent();
+            Bundle bundle = i.getExtras();
+            employeeModel = (EmployeeModel) bundle.getSerializable("employee");
+            int empIndex = bundle.getInt("employeeIndex");
+            EmployeeApplication.getList().remove(empIndex);
+            binding.empFirstname.setText(employeeModel.getEmployeeName());
+            binding.empBirthyear.setText(String.valueOf(employeeModel.getEmployee().getBirthYear()));
+//            binding.empSalary.setText(Integer.parseInt(String.valueOf(employeeModel.getEmployee().getMonthlySalary())));
+//            binding.empOccupation.setText(Integer.parseInt(String.valueOf(employeeModel.getEmployee().getRate())));
+
+
+
+        }
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.type, android.R.layout.simple_spinner_item);
@@ -76,12 +100,8 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                 v->{
 
                     if(binding.empFirstname.getText().toString().equals("")){
-                        binding.empFirstname.setError("Please enter the first name");
+                        binding.empFirstname.setError("Please enter the name");
                         binding.empFirstname.requestFocus();
-
-                    }else if(binding.empLastname.getText().toString().equals("")){
-                        binding.empLastname.setError("Please enter the last name");
-                        binding.empLastname.requestFocus();
 
                     }
                     else if(binding.empBirthyear.getText().toString().equals("")){
@@ -161,6 +181,8 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                                 break;
                         }
 
+
+
                         EmployeeApplication.setList(new EmployeeModel(binding.empId.getText().toString(), employee));
                         System.out.println(EmployeeApplication.getList());
                         Intent intent = new Intent(RegistrationActivity.this, EmployeeDashboard.class);
@@ -216,9 +238,6 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     private void displayFirstname(String digitString) {
         binding.empFirstname.setText(digitString);
     }
-    private void displayLastname(String digitString) {
-        binding.empLastname.setText(digitString);
-    }
     private void displayBirthyear(String digitString) {
         binding.empBirthyear.setText(digitString);
     }
@@ -237,7 +256,6 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         firstnameVal = savedInstanceState.getString(FIRSTNAME);
-        lastnameVal = savedInstanceState.getString(LASTNAME);
         birthyearval = savedInstanceState.getString(BIRTHYEAR);
         empsalaryval = savedInstanceState.getString(EMPSALARY);
         occupationrateval = savedInstanceState.getString(OCCUPATIONRATE);
@@ -247,7 +265,6 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
         outState.putString(FIRSTNAME, binding.empFirstname.getText().toString());
-        outState.putString(LASTNAME, binding.empLastname.getText().toString());
         outState.putString(BIRTHYEAR, binding.empBirthyear.getText().toString());
         outState.putString(EMPSALARY, binding.empSalary.getText().toString());
         outState.putString(OCCUPATIONRATE, binding.empOccupation.getText().toString());
