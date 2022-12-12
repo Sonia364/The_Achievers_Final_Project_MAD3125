@@ -42,9 +42,15 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     private static  String FIRSTNAME = "firstname";
     private static  String LASTNAME = "lastname";
     private static  String BIRTHYEAR = "birthyear";
+    private static  String EMPSALARY = "empsalary";
+    private static  String OCCUPATIONRATE = "occupationrate";
+    private static  String EMPID = "empid";
     private String firstnameVal;
     private String lastnameVal;
     private String birthyearval;
+    private String empsalaryval;
+    private String occupationrateval;
+    private String empid;
 
     @Override
 
@@ -216,6 +222,15 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     private void displayBirthyear(String digitString) {
         binding.empBirthyear.setText(digitString);
     }
+    private void displaySalary(String digitString) {
+        binding.empSalary.setText(digitString);
+    }
+    private void displayOccupation(String digitString) {binding.empOccupation.setText(digitString);}
+    private void displayEmpid(String digitString) {
+        binding.empId.setText(digitString);
+    }
+
+
 
 
     @Override
@@ -224,6 +239,9 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         firstnameVal = savedInstanceState.getString(FIRSTNAME);
         lastnameVal = savedInstanceState.getString(LASTNAME);
         birthyearval = savedInstanceState.getString(BIRTHYEAR);
+        empsalaryval = savedInstanceState.getString(EMPSALARY);
+        occupationrateval = savedInstanceState.getString(OCCUPATIONRATE);
+        empid = savedInstanceState.getString(EMPID);
     }
 
     @Override
@@ -231,6 +249,9 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         outState.putString(FIRSTNAME, binding.empFirstname.getText().toString());
         outState.putString(LASTNAME, binding.empLastname.getText().toString());
         outState.putString(BIRTHYEAR, binding.empBirthyear.getText().toString());
+        outState.putString(EMPSALARY, binding.empSalary.getText().toString());
+        outState.putString(OCCUPATIONRATE, binding.empOccupation.getText().toString());
+        outState.putString(EMPID, binding.empId.getText().toString());
         super.onSaveInstanceState(outState);
     }
 
