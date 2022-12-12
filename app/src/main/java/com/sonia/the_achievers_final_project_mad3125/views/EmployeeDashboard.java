@@ -7,8 +7,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.content.Intent;
 import android.widget.ListView;
@@ -25,7 +23,7 @@ import com.sonia.the_achievers_final_project_mad3125.databinding.ActivityMainBin
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmployeeDashboard extends AppCompatActivity implements SearchView.OnQueryTextListener{
+public class EmployeeDashboard extends AppCompatActivity implements SearchView.OnQueryTextListener {
     private ActivityEmployeeDashboardBinding binding;
     ListView lv;
     EmployeeAdapter employeeAdapter;
@@ -42,14 +40,7 @@ public class EmployeeDashboard extends AppCompatActivity implements SearchView.O
 
         if(EmployeeApplication.getList()  !=null && EmployeeApplication.getList().size()>0) {
 
-            employeeAdapter = new EmployeeAdapter(this, R.layout.employee_layout, EmployeeApplication.getList(), new EmployeeAdapter.onClick() {
-                @Override
-                public void click(int position) {
-                    Intent intent = new Intent(EmployeeDashboard.this, EmployeeDetail.class);
-                    intent.putExtra("key", String.valueOf(position));
-                    startActivity(intent);
-                }
-            });
+            employeeAdapter = new EmployeeAdapter(this, R.layout.employee_layout, EmployeeApplication.getList());
             lv.setAdapter(employeeAdapter);
         }
 

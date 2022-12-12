@@ -33,7 +33,6 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     Vehicle vehicle;
     Employee employee;
     ActivityRegistrationBinding binding;
-    ArrayList<EmployeeModel> employeeList = new ArrayList<>();
     String selectedVehicleType = "";
 
     @Override
@@ -93,10 +92,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                             break;
                     }
 
-
-                    employeeList.add(new EmployeeModel(binding.empId.getText().toString(), employee));
-
-                    EmployeeApplication.setList(employeeList);
+                    EmployeeApplication.setList(new EmployeeModel(binding.empId.getText().toString(), employee));
                     System.out.println(EmployeeApplication.getList());
                     Intent intent = new Intent(RegistrationActivity.this, EmployeeDashboard.class);
                     startActivity(intent);

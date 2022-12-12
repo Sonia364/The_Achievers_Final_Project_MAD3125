@@ -7,7 +7,7 @@ import com.sonia.the_achievers_final_project_mad3125.models.EmployeeModel;
 import java.util.ArrayList;
 
 public class EmployeeApplication extends Application {
-    static ArrayList<EmployeeModel> commonList;
+    static ArrayList<EmployeeModel> commonList = new ArrayList<>();
 
     @Override
     public void onCreate() {
@@ -19,7 +19,7 @@ public class EmployeeApplication extends Application {
         return commonList;
     }
 
-    static public void setList(ArrayList<EmployeeModel> list) {
-        commonList = list;
+    static public void setList(EmployeeModel list) {
+        commonList.add(list);
     }
 }
