@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.sonia.the_achievers_final_project_mad3125.EmployeeApplication;
 import com.sonia.the_achievers_final_project_mad3125.EmployeeViewModel;
+import com.sonia.the_achievers_final_project_mad3125.databinding.ActivityMainBinding;
 import com.sonia.the_achievers_final_project_mad3125.models.Car;
 import com.sonia.the_achievers_final_project_mad3125.models.Employee;
 import com.sonia.the_achievers_final_project_mad3125.models.EmployeeModel;
@@ -37,7 +39,15 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     String selectedVehicleType = "";
     String selectedSidecar = "";
 
+    private static  String FIRSTNAME = "firstname";
+    private static  String LASTNAME = "lastname";
+    private static  String BIRTHYEAR = "birthyear";
+    private String firstnameVal;
+    private String lastnameVal;
+    private String birthyearval;
+
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityRegistrationBinding.inflate(getLayoutInflater());
@@ -196,6 +206,32 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                 binding.workTypeCount.setHint("#bugs");
                 break;
         }
+    }
+    private void displayFirstname(String digitString) {
+        binding.empFirstname.setText(digitString);
+    }
+    private void displayLastname(String digitString) {
+        binding.empLastname.setText(digitString);
+    }
+    private void displayBirthyear(String digitString) {
+        binding.empBirthyear.setText(digitString);
+    }
+
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        firstnameVal = savedInstanceState.getString(FIRSTNAME);
+        lastnameVal = savedInstanceState.getString(LASTNAME);
+        birthyearval = savedInstanceState.getString(BIRTHYEAR);
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
+        outState.putString(FIRSTNAME, binding.empFirstname.getText().toString());
+        outState.putString(LASTNAME, binding.empLastname.getText().toString());
+        outState.putString(BIRTHYEAR, binding.empBirthyear.getText().toString());
+        super.onSaveInstanceState(outState);
     }
 
     @Override
