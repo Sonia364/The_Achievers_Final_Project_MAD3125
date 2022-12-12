@@ -115,9 +115,7 @@ public class EmployeeDashboard extends AppCompatActivity implements SearchView.O
             }
 
             employeeAdapter.setData(tempArrayList);
-//
-//            employeeAdapter = new EmployeeAdapter(this, R.layout.employee_layout, tempArrayList);
-//            lv.setAdapter(employeeAdapter);
+
         }
 
         return true;
