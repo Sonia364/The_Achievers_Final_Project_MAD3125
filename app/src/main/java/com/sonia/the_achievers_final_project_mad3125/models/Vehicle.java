@@ -24,7 +24,7 @@ public class Vehicle {
 
      */
 
-    public Vehicle(String vehicleMake, String vehiclePlate, String vehicleColor,String vehicleType){
+    public Vehicle(String vehicleMake, String vehiclePlate, String vehicleColor, String vehicleType){
         make = vehicleMake;
         plate = vehiclePlate;
         color = vehicleColor;
@@ -42,7 +42,7 @@ public class Vehicle {
         str = "\nEmployee has a " + type + "\n"
                 + "\t - make: " + make + "\n"
                 + "\t - plate: " + plate + "\n"
-                + "\t - color: " + color + "\n"
+                + "\t - color: " + color + "\n";
         return str;
     }
 
