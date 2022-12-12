@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationBarView;
 import com.sonia.the_achievers_final_project_mad3125.EmployeeApplication;
@@ -83,11 +84,26 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                         binding.empId.setError("Please enter Employee id");
                         binding.empId.requestFocus();
                     }
-
-
-
-
-
+                    else if(binding.empType.getSelectedItem().toString().equals("Choose a Type.."))
+                    {
+                        TextView errorText = (TextView)binding.empType.getSelectedView();
+                        errorText.setError("");
+                        errorText.setText("Please Choose Employee type");
+                    }
+                    else if(binding.vehicleModel.getText().toString().equals("")){
+                        binding.vehicleModel.setError("Please select vehicle model");
+                        binding.vehicleModel.requestFocus();
+                    }
+                    else if(binding.plateNumber.getText().toString().equals("")){
+                        binding.plateNumber.setError("Please enter the Plate number");
+                        binding.plateNumber.requestFocus();
+                    }
+                    else if(binding.chooseColor.getSelectedItem().toString().equals("Choose a color.."))
+                    {
+                        TextView errorText = (TextView)binding.chooseColor.getSelectedView();
+                        errorText.setError("");
+                        errorText.setText("Please Choose Vehicle Color");
+                    }
                     else {
 
                         switch (selectedVehicleType) {
