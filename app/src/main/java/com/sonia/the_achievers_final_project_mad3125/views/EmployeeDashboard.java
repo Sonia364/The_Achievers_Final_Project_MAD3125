@@ -7,23 +7,30 @@ import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.content.Intent;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.sonia.the_achievers_final_project_mad3125.EmployeeApplication;
+import com.sonia.the_achievers_final_project_mad3125.views.EmployeeDetail;
+import com.sonia.the_achievers_final_project_mad3125.models.Employee;
 import com.sonia.the_achievers_final_project_mad3125.models.EmployeeAdapter;
 import com.sonia.the_achievers_final_project_mad3125.models.EmployeeModel;
+import com.sonia.the_achievers_final_project_mad3125.models.Vehicle;
 import com.sonia.the_achievers_final_project_mad3125.R;
 import com.sonia.the_achievers_final_project_mad3125.databinding.ActivityEmployeeDashboardBinding;
 import com.sonia.the_achievers_final_project_mad3125.databinding.ActivityMainBinding;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmployeeDashboard extends AppCompatActivity implements SearchView.OnQueryTextListener {
+public class EmployeeDashboard extends AppCompatActivity implements SearchView.OnQueryTextListener, Serializable, AdapterView.OnItemClickListener {
     private ActivityEmployeeDashboardBinding binding;
     ListView lv;
     EmployeeAdapter employeeAdapter;
@@ -44,6 +51,7 @@ public class EmployeeDashboard extends AppCompatActivity implements SearchView.O
             lv.setAdapter(employeeAdapter);
         }
 
+        lv.setOnItemClickListener(this);
         lv.setTextFilterEnabled(true);
 
 
@@ -113,5 +121,13 @@ public class EmployeeDashboard extends AppCompatActivity implements SearchView.O
         }
 
         return true;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+        String employee = EmployeeApplication.getList().get(position).getEmployee().toString();
+        Intent intent = new Intent(EmployeeDashboard.this, EmployeeDetail.class);
+        intent.putExtra("employee",employee);
+        startActivity(intent);
     }
 }
