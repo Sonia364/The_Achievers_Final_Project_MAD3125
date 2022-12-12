@@ -34,6 +34,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     Employee employee;
     ActivityRegistrationBinding binding;
     String selectedVehicleType = "";
+    String selectedSidecar = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,51 +52,74 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         binding.typeCar.setOnClickListener(this);
         binding.typeMotorcycle.setOnClickListener(this);
 
+        binding.cycleYes.setOnClickListener(this);
+        binding.cycleNo.setOnClickListener(this);
+
         binding.btnRegister.setOnClickListener(
                 v->{
-                    switch(selectedVehicleType){
-                        case "Car":
-                            vehicle = new Car(binding.vehicleModel.getText().toString(), binding.plateNumber.getText().toString(), binding.chooseColor.getSelectedItem().toString(), binding.carType.getText().toString(),selectedVehicleType);
-                            break;
-                        case "Motorcycle":
-                            vehicle = new Motorcycle(binding.vehicleModel.getText().toString(), binding.plateNumber.getText().toString(), binding.chooseColor.getSelectedItem().toString(), true , selectedVehicleType);
-                            break;
+
+                    if(binding.empFirstname.getText().toString().equals("")){
+                        binding.empFirstname.setError("Please enter the first name");
+                        binding.empFirstname.requestFocus();
+
+                    }else if(binding.empLastname.getText().toString().equals("")){
+                        binding.empLastname.setError("Please enter the last name");
+                        binding.empLastname.requestFocus();
+
+                    }
+                    else if(binding.empBirthyear.getText().toString().equals("")){
+                        binding.empBirthyear.setError("Please enter the Birth year");
+                        binding.empBirthyear.requestFocus();
                     }
 
-                    switch(binding.empType.getSelectedItem().toString()){
-                        case "Manager":
-                            employee = new Manager(binding.empFirstname.getText().toString(),
-                                    Integer.parseInt(binding.empBirthyear.getText().toString()),
-                                    Integer.parseInt(binding.empSalary.getText().toString()),
-                                    Integer.parseInt(binding.empOccupation.getText().toString()),
-                                    binding.empType.getSelectedItem().toString(),
-                                    Integer.parseInt(binding.workTypeCount.getText().toString()),
-                                    vehicle);
-                            break;
-                        case "Programmer":
-                            employee = new Programmer(binding.empFirstname.getText().toString(),
-                                    Integer.parseInt(binding.empBirthyear.getText().toString()),
-                                    Integer.parseInt(binding.empSalary.getText().toString()),
-                                    Integer.parseInt(binding.empOccupation.getText().toString()),
-                                    Integer.parseInt(binding.workTypeCount.getText().toString()),
-                                    binding.empType.getSelectedItem().toString(),
-                                    vehicle);
-                            break;
-                        case "Tester":
-                            employee = new Tester(binding.empFirstname.getText().toString(),
-                                    Integer.parseInt(binding.empBirthyear.getText().toString()),
-                                    Integer.parseInt(binding.empSalary.getText().toString()),
-                                    Integer.parseInt(binding.empOccupation.getText().toString()),
-                                    Integer.parseInt(binding.workTypeCount.getText().toString()),
-                                    binding.empType.getSelectedItem().toString(),
-                                    vehicle);
-                            break;
-                    }
 
-                    EmployeeApplication.setList(new EmployeeModel(binding.empId.getText().toString(), employee));
-                    System.out.println(EmployeeApplication.getList());
-                    Intent intent = new Intent(RegistrationActivity.this, EmployeeDashboard.class);
-                    startActivity(intent);
+
+                    else {
+
+                        switch (selectedVehicleType) {
+                            case "Car":
+                                vehicle = new Car(binding.vehicleModel.getText().toString(), binding.plateNumber.getText().toString(), binding.chooseColor.getSelectedItem().toString(), binding.carType.getText().toString(), selectedVehicleType);
+                                break;
+                            case "Motorcycle":
+                                vehicle = new Motorcycle(binding.vehicleModel.getText().toString(), binding.plateNumber.getText().toString(), binding.chooseColor.getSelectedItem().toString(), selectedSidecar, selectedVehicleType);
+                                break;
+                        }
+
+                        switch (binding.empType.getSelectedItem().toString()) {
+                            case "Manager":
+                                employee = new Manager(binding.empFirstname.getText().toString(),
+                                        Integer.parseInt(binding.empBirthyear.getText().toString()),
+                                        Integer.parseInt(binding.empSalary.getText().toString()),
+                                        Integer.parseInt(binding.empOccupation.getText().toString()),
+                                        binding.empType.getSelectedItem().toString(),
+                                        Integer.parseInt(binding.workTypeCount.getText().toString()),
+                                        vehicle);
+                                break;
+                            case "Programmer":
+                                employee = new Programmer(binding.empFirstname.getText().toString(),
+                                        Integer.parseInt(binding.empBirthyear.getText().toString()),
+                                        Integer.parseInt(binding.empSalary.getText().toString()),
+                                        Integer.parseInt(binding.empOccupation.getText().toString()),
+                                        Integer.parseInt(binding.workTypeCount.getText().toString()),
+                                        binding.empType.getSelectedItem().toString(),
+                                        vehicle);
+                                break;
+                            case "Tester":
+                                employee = new Tester(binding.empFirstname.getText().toString(),
+                                        Integer.parseInt(binding.empBirthyear.getText().toString()),
+                                        Integer.parseInt(binding.empSalary.getText().toString()),
+                                        Integer.parseInt(binding.empOccupation.getText().toString()),
+                                        Integer.parseInt(binding.workTypeCount.getText().toString()),
+                                        binding.empType.getSelectedItem().toString(),
+                                        vehicle);
+                                break;
+                        }
+
+                        EmployeeApplication.setList(new EmployeeModel(binding.empId.getText().toString(), employee));
+                        System.out.println(EmployeeApplication.getList());
+                        Intent intent = new Intent(RegistrationActivity.this, EmployeeDashboard.class);
+                        startActivity(intent);
+                    }
 
                 });
 
@@ -112,6 +136,13 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
             binding.carType.setVisibility(View.GONE);
             binding.sideCarLayout.setVisibility(View.VISIBLE);
             selectedVehicleType = "Motorcycle";
+        }
+
+        if(binding.cycleYes.isChecked()){
+            selectedSidecar = "Yes";
+        }
+        if(binding.cycleNo.isChecked()) {
+            selectedSidecar = "No";
         }
 
 

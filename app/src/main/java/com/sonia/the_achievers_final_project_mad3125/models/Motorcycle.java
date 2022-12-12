@@ -2,7 +2,7 @@ package com.sonia.the_achievers_final_project_mad3125.models;
 
 public class Motorcycle extends Vehicle{
 
-    private boolean sideCar;
+    private String sideCar;
 
     /**
      * The Constructor sets the vehicle's make,
@@ -14,7 +14,7 @@ public class Motorcycle extends Vehicle{
      * @param vehicleSideCar The vehicle's sidecar.
      *
      */
-    public Motorcycle(String vehicleMake, String vehiclePlate, String vehicleColor, boolean vehicleSideCar, String vehicleType) {
+    public Motorcycle(String vehicleMake, String vehiclePlate, String vehicleColor, String vehicleSideCar, String vehicleType) {
         super(vehicleMake, vehiclePlate, vehicleColor, vehicleType);
         sideCar = vehicleSideCar;
     }
@@ -29,7 +29,7 @@ public class Motorcycle extends Vehicle{
     {
         String str;
         String newStr;
-        if (sideCar){
+        if (sideCar.equals("Yes")){
             newStr = "\t - with a sidecar\n ";
         }else{
             newStr = "\t - without a sidecar";
