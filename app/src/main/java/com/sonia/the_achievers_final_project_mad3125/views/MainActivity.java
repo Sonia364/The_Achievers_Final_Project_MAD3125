@@ -22,20 +22,45 @@ public class MainActivity extends AppCompatActivity {
         binding.btnLogin.setOnClickListener(
                 v-> {
                     if (binding.username.getText().toString().equals("")) {
-                        Toast.makeText(this, "Please enter your Email", Toast.LENGTH_SHORT).show();
+                        binding.username.setError("Please enter username");
+                        binding.username.requestFocus();
                         return;
+//
                     }
                     if (binding.password.getText().toString().equals("")) {
-                        Toast.makeText(this, "Please enter your Password", Toast.LENGTH_SHORT).show();
+                        binding.password.setError("Please enter your Password");
+                        binding.password.requestFocus();
                         return;
+
                     }
 
                     if (binding.username.getText().toString().equals("admin") && binding.password.getText().toString().equals("admin")) {
                         Intent intent = new Intent(MainActivity.this, EmployeeDashboard.class);
                         startActivity(intent);
 
+                    } else
+                    {
+                        if (!binding.username.getText().toString().equals("admin")){
+                            binding.username.setError("Please provide valid username");
+                            binding.username.setText("");
+                            binding.password.requestFocus();
+                            return;
+                        }
+                        else if(!binding.password.getText().toString().equals("admin")){
+                            binding.password.setError("Please provide valid password");
+                            binding.password.setText("");
+                            binding.password.requestFocus();
+                            return;
+                        }
+                        else{
+                            binding.username.setError("Please provide valid username");
+                            binding.username.setText("");
+                            binding.password.requestFocus();
+                            binding.password.setError("Please provide valid password");
+                            binding.password.setText("");
+                            return;
+                        }
                     }
-
                 });
 
     }
