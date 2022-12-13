@@ -190,10 +190,16 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
 
 
-                        EmployeeApplication.setList(new EmployeeModel(binding.empId.getText().toString(), employee));
-                        System.out.println(EmployeeApplication.getList());
-                        Intent intent = new Intent(RegistrationActivity.this, EmployeeDashboard.class);
-                        startActivity(intent);
+                        if(isEmployeeExist(binding.empId.getText().toString())){
+                            binding.empId.setError("An employee with this id already exists");
+                            binding.empId.requestFocus();
+                        }
+                        else{
+                            EmployeeApplication.setList(new EmployeeModel(binding.empId.getText().toString(), employee));
+                            System.out.println(EmployeeApplication.getList());
+                            Intent intent = new Intent(RegistrationActivity.this, EmployeeDashboard.class);
+                            startActivity(intent);
+                        }
                     }
 
                 });
@@ -282,5 +288,14 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
+    }
+
+    public boolean isEmployeeExist(String empId){
+        for (EmployeeModel c : EmployeeApplication.getList()) {
+            if(c.getId().equals(empId)){
+                return true;
+            }
+        }
+        return false;
     }
 }
