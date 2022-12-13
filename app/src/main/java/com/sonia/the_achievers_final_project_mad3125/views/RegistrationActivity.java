@@ -61,12 +61,19 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         setContentView(binding.getRoot());
         employeeViewModel = new ViewModelProvider(this).get(EmployeeViewModel.class);
 
+        if (savedInstanceState != null){
+            String firstnameString = String.valueOf(savedInstanceState.getString(firstnameVal));
+            String birthYearString = String.valueOf(savedInstanceState.getString(birthyearval));
+            String empSalaryString = String.valueOf(savedInstanceState.getString(empsalaryval));
+            String occupationString = String.valueOf(savedInstanceState.getString(occupationrateval));
+            String empIdString = String.valueOf(savedInstanceState.getString(empid));
 
-
-        //Bundle extras = getIntent().getExtras();
-        //String newString = extras.getString("employee");
-       // binding.empFirstname.setText(newString.);
-
+            displayFirstname(firstnameString);
+            displayBirthYear(birthYearString);
+            displaySalary(empSalaryString);
+            displayOccupation(occupationString);
+            displayEmpId(empIdString);
+        }
 
         if(getIntent().getSerializableExtra("employee")!= null){
 
@@ -238,14 +245,14 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     private void displayFirstname(String digitString) {
         binding.empFirstname.setText(digitString);
     }
-    private void displayBirthyear(String digitString) {
+    private void displayBirthYear(String digitString) {
         binding.empBirthyear.setText(digitString);
     }
     private void displaySalary(String digitString) {
         binding.empSalary.setText(digitString);
     }
     private void displayOccupation(String digitString) {binding.empOccupation.setText(digitString);}
-    private void displayEmpid(String digitString) {
+    private void displayEmpId(String digitString) {
         binding.empId.setText(digitString);
     }
 
