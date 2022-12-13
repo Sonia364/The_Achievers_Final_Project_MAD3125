@@ -53,35 +53,6 @@ public class EmployeeDashboard extends AppCompatActivity implements SearchView.O
         super.onCreate(savedInstanceState);
         binding = ActivityEmployeeDashboardBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-        EmployeeApplication.getList().add(new EmployeeModel("emp123",new Manager("Rabia",
-                1995,
-                2000,
-                20,
-                "Manager",
-                20,
-                new Car("Honda",
-                        "1234",
-                        "Red",
-                        "Sports",
-                        "Car"
-                ))));
-
-        EmployeeApplication.getList().add(new EmployeeModel("emp123",new Programmer("Abhi",
-                1985,
-                2000,
-                20,
-                12,
-                "Programmer",
-                new Car("Honda",
-                        "1234",
-                        "Red",
-                        "Sports",
-                        "Car"
-                ))));
-
-
-
         lv = binding.employeeListView;
         setContentView(binding.getRoot());
 

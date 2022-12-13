@@ -8,7 +8,12 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.widget.Toast;
 
+import com.sonia.the_achievers_final_project_mad3125.EmployeeApplication;
 import com.sonia.the_achievers_final_project_mad3125.databinding.ActivityMainBinding;
+import com.sonia.the_achievers_final_project_mad3125.models.Car;
+import com.sonia.the_achievers_final_project_mad3125.models.EmployeeModel;
+import com.sonia.the_achievers_final_project_mad3125.models.Manager;
+import com.sonia.the_achievers_final_project_mad3125.models.Programmer;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -48,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     if (binding.username.getText().toString().equals("admin") && binding.password.getText().toString().equals("admin")) {
+                        setDummyData();
                         Intent intent = new Intent(MainActivity.this, EmployeeDashboard.class);
                         startActivity(intent);
 
@@ -97,5 +103,33 @@ public class MainActivity extends AppCompatActivity {
         outState.putString(USERNAME, binding.username.getText().toString());
         outState.putString(PASSWORD, binding.password.getText().toString());
         super.onSaveInstanceState(outState);
+    }
+
+    public void setDummyData(){
+        EmployeeApplication.getList().add(new EmployeeModel("emp1",new Manager("Rabia",
+                1995,
+                2000,
+                20,
+                "Manager",
+                20,
+                new Car("Honda",
+                        "1234",
+                        "Red",
+                        "Sports",
+                        "Car"
+                ))));
+
+        EmployeeApplication.getList().add(new EmployeeModel("emp2",new Programmer("Abhi",
+                1985,
+                2000,
+                20,
+                12,
+                "Programmer",
+                new Car("Honda",
+                        "1234",
+                        "Red",
+                        "Sports",
+                        "Car"
+                ))));
     }
 }
