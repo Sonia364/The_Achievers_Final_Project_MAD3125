@@ -106,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setDummyData(){
+        EmployeeApplication.getList().clear();
         EmployeeApplication.getList().add(new EmployeeModel("emp1",new Manager("Rabia",
                 1995,
                 2000,
