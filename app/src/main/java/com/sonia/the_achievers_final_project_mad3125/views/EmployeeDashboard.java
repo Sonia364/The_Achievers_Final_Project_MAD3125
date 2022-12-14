@@ -56,11 +56,8 @@ public class EmployeeDashboard extends AppCompatActivity implements SearchView.O
         lv = binding.employeeListView;
         setContentView(binding.getRoot());
 
-        if(EmployeeApplication.getList()  !=null && EmployeeApplication.getList().size()>0) {
-
-            employeeAdapter = new EmployeeAdapter(this, R.layout.employee_layout, EmployeeApplication.getList());
-            lv.setAdapter(employeeAdapter);
-        }
+        employeeAdapter = new EmployeeAdapter(this, R.layout.employee_layout, EmployeeApplication.getList());
+        lv.setAdapter(employeeAdapter);
 
         lv.setOnItemClickListener(this);
         lv.setLongClickable(true);
@@ -110,7 +107,8 @@ public class EmployeeDashboard extends AppCompatActivity implements SearchView.O
         // this is your adapter that will be filtered
         if (TextUtils.isEmpty(newText))
         {
-            employeeAdapter.setData(EmployeeApplication.getList());
+            employeeAdapter = new EmployeeAdapter(this, R.layout.employee_layout, EmployeeApplication.getList());
+            lv.setAdapter(employeeAdapter);
         }
         else
         {
@@ -134,7 +132,8 @@ public class EmployeeDashboard extends AppCompatActivity implements SearchView.O
                 }
             }
 
-            employeeAdapter.setData(tempArrayList);
+            employeeAdapter = new EmployeeAdapter(this, R.layout.employee_layout, tempArrayList);
+            lv.setAdapter(employeeAdapter);
 
         }
 

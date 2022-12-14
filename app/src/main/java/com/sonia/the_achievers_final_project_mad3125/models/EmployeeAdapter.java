@@ -29,10 +29,6 @@ public class EmployeeAdapter extends ArrayAdapter implements Serializable {
         this.layoutInflater = LayoutInflater.from(context);
         this.layoutResource = resource;
     }
-    public void setData(ArrayList<EmployeeModel> employee){
-        this.employees = employee;
-        notifyDataSetChanged();
-    }
 
     @Override
     public int getCount() {
